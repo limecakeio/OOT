@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import aboutDialog.About;
 
 public class ImageViewer0 {
 	private JFrame frame;
@@ -66,13 +69,14 @@ public class ImageViewer0 {
 		aboutItem.addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("(Anonymous) About clicked");
+						About dialog = new About();
+						dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+						dialog.setVisible(true);
 					}
 				});
 		
-		fileChooser = new JFileChooser(System.getProperty("user.dir"));
-		
-		fileChooser.showOpenDialog(frame);
+//		fileChooser = new JFileChooser(System.getProperty("user.dir"));
+//		fileChooser.showOpenDialog(frame);
 		
 	}
 	public static void main(String[] args) {
