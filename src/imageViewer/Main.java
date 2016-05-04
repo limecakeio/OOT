@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -15,20 +16,25 @@ import javax.swing.JMenuItem;
 
 import aboutDialog.About;
 
-public class ImageViewer0 {
+public class Main {
 	private JFrame frame;
 	private JFileChooser fileChooser;
 
-	public ImageViewer0() {
+	public Main() {
 		makeFrame();
 	}
 	private void makeFrame() {
+		ImageModel model = new ImageModel();
+		ImageView view = new ImageView(frame);
+		ImageController controller = new ImageController(model, view);
+		
+		
 		frame = new JFrame("ImageViewer");
-		Container contentPane = frame.getContentPane();
-		JLabel label = new JLabel("I am a label.");
-		JButton button = new JButton("The hardest button to button");
-		//contentPane.add(label);
-		contentPane.add(button);
+		fileChooser = new JFileChooser(System.getProperty("user.dir"));
+		fileChooser.showOpenDialog(frame);
+		String filename = fileChooser.getSelectedFile().getName();
+		ImageIcon image = new ImageIcon(filename);
+		//label.setIcon(image);
 		frame.pack();
 		frame.setVisible(true);
 		
@@ -74,12 +80,9 @@ public class ImageViewer0 {
 					}
 				});
 		
-//		fileChooser = new JFileChooser(System.getProperty("user.dir"));
-//		fileChooser.showOpenDialog(frame);
-		
 	}
 	public static void main(String[] args) {
-		new ImageViewer0();
+		new Main();
 	}
 	
 	public void actionPerformed(ActionEvent event) {
