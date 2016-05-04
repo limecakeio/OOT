@@ -1,6 +1,5 @@
 package imageViewer;
 
-import imageViewer.Button2Life.*;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
